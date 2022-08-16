@@ -1,0 +1,3 @@
+check filesystem test path /test
+        if space usage > 85% then alert
+        if does not exist then exec "/bin/mount -t ext4 /dev/xvdb1 /test"
