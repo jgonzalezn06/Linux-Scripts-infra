@@ -1,0 +1,4 @@
+check host keycloak with address x.x.x.x
+        start program "/usr/bin/systemctl start keycloak"
+        stop  program "/usr/bin/systemctl stop  keycloak"
+        if failed port 8443 then alert
