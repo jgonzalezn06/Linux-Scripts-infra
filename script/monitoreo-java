@@ -1,0 +1,6 @@
+# Verifica si esta corriendo el programa
+JAVA_APP='java.jar'
+command=`ps x | grep $JAVA_APP | grep -v grep | wc -l`
+if [ $command -ge 1 ]; then
+   echo "Aplicacion $JAVA_APP esta en Ejecucion"
+fi
