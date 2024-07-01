@@ -1,0 +1,17 @@
+#!/bin/bash
+
+START=`date --date='-60 minutes' '+%Y-%m-%d %H:%M'`
+END=`date --date='now' '+%Y-%m-%d %H:%M'``
+FILE='/path/file.log'
+
+ERRORCOUNT=$(awk "/$START/, /$END/" $FILE | grep  'HTTP response code: 500' | wc -l)
+
+if [[ "$ERRORCOUNT" -eq 0 ]]; then
+  RESULTADO='OK, log sin errores 500'
+  CODIGO=0
+else
+  if [[ "$ERRORCOUNT" -ne 0 ]]; then
+    RESULTADO='WARNING, Se observan errores 500 en log del autorizador'
+  fi
+  CODIGO=1
+fi
